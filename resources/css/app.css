@@ -1,0 +1,1029 @@
+/* Poppins Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap");
+
+:root {
+    --primary-color: #6f1d1b; /* Deep Red */
+    --secondary-color: #ffe6a7; /* Cream/Yellow */
+    --accent-color: #99582a; /* Brown */
+    --text-dark: #432818; /* Dark Brown */
+    --text-light: #666666;
+    --white: #ffffff;
+    --off-white: #fdfdfd;
+    --dark-bg: #1a1a1a;
+
+    --font-main: "Poppins", sans-serif;
+    --font-serif: "Playfair Display", serif;
+
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Header */
+header {
+    background-color: transparent;
+    padding: 25px 0; /* Increased from 15px */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.4s ease, padding 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Header Red Text Mode (for Shop and About pages) */
+header.header-red-text:not(.scrolled) .logo,
+header.header-red-text:not(.scrolled) .logo a {
+    color: var(--primary-color);
+}
+
+header.header-red-text:not(.scrolled) .nav-links a {
+    color: var(--primary-color);
+}
+
+header.header-red-text:not(.scrolled) .nav-icons a,
+header.header-red-text:not(.scrolled) .nav-icons button {
+    color: var(--primary-color);
+}
+
+header.header-red-text:not(.scrolled) .nav-links a::after {
+    background-color: var(--primary-color);
+}
+
+header.scrolled {
+    background-color: var(--white);
+    box-shadow: var(--shadow-soft);
+    padding: 15px 0; /* Increased from 10px */
+}
+
+/* Default State (Transparent) - Light Colors */
+header nav .logo,
+header nav .nav-links a,
+header nav .nav-icons .btn-icon,
+header nav .nav-icons a {
+    color: var(--white);
+    transition: color 0.3s ease;
+}
+
+/* Scrolled State - Dark Colors */
+header.scrolled nav .logo,
+header.scrolled nav .nav-links a,
+header.scrolled nav .nav-icons .btn-icon,
+header.scrolled nav .nav-icons a {
+    color: var(--text-dark);
+}
+
+/* Ensure animation works with transparency if needed, or remove if just fade is preferred
+   The previous reveal animation might conflict with 'fixed' initial load if not careful.
+   Let's keep it simple: Start transparent, reveal animation is less critical than the sticky effect now.
+   But if user wants 'reveal', we can keep it standard or just simple fade.
+   The user asked for 'transparent default', so let's stick to that.
+*/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative; /* Context for logo */
+}
+
+/* Centered Logo */
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* Slightly larger logo */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    /* No flex-grow, stays on left */
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: auto; /* Push to right just in case */
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    /* color: var(--text-dark); Removed to allow header override */
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(
+        --secondary-color
+    ); /* Light color for underline in transparent state? Or keep primary */
+    transition: var(--transition);
+}
+
+/* Update underline color on scroll */
+header.scrolled .nav-links a::after {
+    background-color: var(--primary-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Specific overrides for search input icon inside button if needed, 
+   but .btn-icon handles the button itself. */
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 60px 0 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #cccccc;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Cards */
+.product-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+/* Shop Promotions Hero */
+.shop-hero {
+    text-align: center;
+    margin-bottom: 40px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 230, 167, 0.4),
+        /* Slightly stronger start */ rgba(253, 253, 253, 0)
+    );
+    padding: 220px 0 60px; /* Increased to 220px as requested */
+    margin-top: -100px; /* Pull up behind header (assuming header is ~80-100px) */
+    width: 100%;
+}
+
+/* Shop Filter Section */
+.shop-filter-container {
+    max-width: 850px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.shop-filter-form {
+    display: flex;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08); /* Smoother, larger shadow */
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shop-filter-form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.12);
+}
+
+.filter-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.filter-group.start-group {
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.filter-group i {
+    color: var(--primary-color); /* Use primary color for icons */
+    margin-right: 15px;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.filter-group i.fa-chevron-down {
+    margin-right: 0;
+    margin-left: 10px;
+    pointer-events: none;
+    position: absolute;
+    right: 25px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.filter-group input,
+.filter-group select {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: transparent;
+    font-weight: 500;
+}
+
+.filter-group input::placeholder {
+    color: #cebaa5; /* Softer placeholder color */
+    font-weight: 400;
+}
+
+.filter-group select {
+    cursor: pointer;
+    appearance: none;
+}
+
+/* Mobile Adaptation for Search Bar */
+@media (max-width: 768px) {
+    .shop-filter-form {
+        flex-direction: column;
+        border-radius: 24px;
+        padding: 20px;
+    }
+
+    .filter-group {
+        padding: 15px 10px;
+    }
+
+    .filter-group.start-group {
+        border-right: none;
+    }
+}
+/* Live Search Dropdown */
+/* Categories Dropdown - Modern Glass Effect */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+    min-width: 220px;
+    width: max-content;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    padding: 8px;
+    border-radius: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 10px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-parent:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+    margin-top: 0;
+}
+
+.mega-menu::before {
+    display: none;
+}
+
+.mega-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mega-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.mega-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: translateX(4px);
+}
+
+.mega-menu-item img,
+.mega-menu-placeholder {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mega-menu-item:hover img {
+    transform: scale(1.05);
+}
+
+.mega-menu-placeholder {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.mega-menu-text h4 {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.mega-menu-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.live-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.live-search-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    transition: background 0.2s;
+    text-decoration: none;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.live-search-item:last-child {
+    border-bottom: none;
+}
+
+.live-search-item:hover {
+    background-color: var(--off-white);
+}
+
+.live-search-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.live-search-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.live-search-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0; /* Remove bottom margin to align */
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.live-search-info span {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-left: 10px; /* Spacing between title and price */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.live-search-no-results {
+    padding: 15px 20px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.shop-hero h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.promotions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Force 2 columns */
+    gap: 30px;
+    margin-bottom: 30px;
+    max-width: 1000px; /* Constrain width for better card aspect ratio */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .promotions-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+}
+
+.promo-card {
+    position: relative;
+    height: 250px; /* Reduced height for wider look */
+    border-radius: 12px; /* Slightly tighter radius */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px; /* Adjusted padding */
+    color: var(--white);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.promo-grid-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0) 60%
+    ); /* Stronger gradient on left for text readability */
+    z-index: 1;
+}
+
+.promo-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #2c4a35; /* Darker Green */
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+    border-radius: 2px;
+}
+/* Hero Section Updates */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+    /* Overlay to ensure text readability if needed, though specific design might vary */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Subtle darkening overlay */
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Scroll Animation */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--white);
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.scroll-indicator i {
+    font-size: 1.5rem;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+/* Navbar Adjustments */
+/* header { */
+/* padding: 10px 0; */
+/* height: 70px; */
+/* display: flex; */
+/* align-items: center; */
+/* } */
+
+header .container {
+    height: 100%;
+    margin: 0 auto; /* Ensure centering */
+    width: 100%; /* Ensure full width avail */
+}
+
+header nav {
+    height: 100%;
+    width: 100%; /* Ensure nav fills container */
+    display: flex; /* Re-affirm flex */
+    justify-content: space-between; /* Re-affirm spacing */
+    align-items: center;
+}
+
+.nav-links {
+    height: 100%;
+    align-items: center;
+}
+
+/* Mega Menu */
+.dropdown-parent {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 800px;
+    background: var(--white);
+    box-shadow: var(--shadow-hover);
+    padding: 30px;
+    transform: translateX(-50%) translateY(15px); /* Start slightly down */
+    border-radius: 0 0 8px 8px;
+
+    /* Animation Properties */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-parent:hover .mega-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mega-menu-categories h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.mega-menu-categories ul li {
+    margin-bottom: 8px;
+}
+
+.mega-menu-categories ul li a {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.mega-menu-categories ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.mega-menu-products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.mega-product-card {
+    text-align: center;
+}
+
+.mega-product-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 8px;
+}
+
+.mega-product-card h5 {
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    transition: var(--transition);
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 20px;
+    outline: none;
+    position: absolute;
+    right: 30px;
+    background: white;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-dark);
+    padding: 5px;
+    transition: var(--transition);
+}
+
+.btn-icon:hover {
+    color: var(--primary-color);
+}
+
+.search-container:hover .search-input,
+.search-input:focus {
+    width: 200px;
+    opacity: 1;
+}
+
+/* Account Dropdown */
+.account-dropdown-parent {
+    position: relative;
+    padding-bottom: 10px; /* Bridge gap for hover */
+    margin-bottom: -10px; /* Offset the padding */
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: var(--white);
+    box-shadow: var(--shadow-hover);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+    border-radius: 8px;
+    flex-direction: column;
+    margin-top: 10px; /* Slight offset visual, but connected via parent padding */
+}
+
+.account-dropdown-parent:hover .account-dropdown {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.account-info {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.account-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.account-info strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(
+        --text-dark
+    ) !important; /* Force dark text for dropdown items to override header white preference */
+}
+
+.account-dropdown a:hover {
+    color: var(--primary-color) !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Live Search Results */
+.search-results {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: var(--white);
+    box-shadow: var(--shadow-hover);
+    border-radius: 8px;
+    margin-top: 10px;
+    z-index: 1001;
+    display: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-results.active {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: var(--off-white);
+}
+
+.search-result-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.search-result-info h6 {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+}
+
+.search-result-info span {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Account Dropdown Persistence */
+.account-dropdown-parent:hover .account-dropdown {
+    display: flex; /* Kept for structure */
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.account-dropdown {
+    /* Override previous display:none for transition support, 
+       but we still need display:flex/none toggling for layout? 
+       Actually, standard is allow pointer events. 
+       Let's use opacity/visibility on top of display for the delay effect, 
+       OR just rely on the pure CSS opacity trick if display is not toggled.
+    */
+    display: flex; /* Always flex, hide with opacity/visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.5s; /* 0.5s delay before hiding */
+
+    /* Previous styles */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: var(--white);
+    box-shadow: var(--shadow-hover);
+    padding: 15px;
+    z-index: 1000;
+    border-radius: 8px;
+    flex-direction: column;
+    margin-top: 10px;
+}
