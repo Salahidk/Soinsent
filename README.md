@@ -1,4 +1,4 @@
-# Soinsent.com 🌸
+# Soinsent.com
 
 ![Project Status](https://img.shields.io/badge/status-live-success)
 ![Framework](https://img.shields.io/badge/laravel-v10-red)
