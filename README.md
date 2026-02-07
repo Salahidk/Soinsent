@@ -1,59 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Soinsent.com 🌸
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Project Status](https://img.shields.io/badge/status-live-success)
+![Framework](https://img.shields.io/badge/laravel-v10-red)
+![Security](https://img.shields.io/badge/security-hardened-blue)
 
-## About Laravel
+**Soinsent** is a specialized e-commerce platform dedicated to luxury perfumes and organic beauty products. It provides a seamless shopping experience with a focus on elegance, user trust, and secure transactions.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project bridges the gap between **modern web development** and **cybersecurity**, demonstrating how to build a robust online store using the **Laravel** ecosystem while adhering to strict safety standards.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+👉 **Live Demo:** [https://soinsent.com](https://soinsent.com)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🚀 Key Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🛒 E-Commerce Functionality
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **Dynamic Catalog:** Browse varied categories (Parfums, Soins, Packs) with advanced filtering.
+-   **Shopping Cart & Checkout:** Persistent cart management and a streamlined checkout flow.
+-   **User Accounts:** Dashboard for order history, profile management, and wishlists.
+-   **Admin Panel:** A comprehensive dashboard to manage products, inventory, and view sales analytics.
 
-## Laravel Sponsors
+### 🛡️ Security & Performance (DevSecOps)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   **Secure Authentication:** Implemented using Laravel's robust auth guards (protecting against Brute Force & Session Hijacking).
+-   **SQL Injection Prevention:** Utilized **Eloquent ORM** parameter binding to sanitize all database queries.
+-   **XSS Protection:** Automatic escaping in Blade templates to prevent Cross-Site Scripting.
+-   **CSRF Protection:** Global CSRF middleware enabled on all POST/PUT/DELETE requests.
+-   **Role-Based Access Control (RBAC):** Custom Middleware to restrict admin routes.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Tech Stack
 
-## Contributing
+**Frontend**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) **Tailwind CSS** (Utility-first framework for responsive, luxury design)
+-   ![Blade](https://img.shields.io/badge/-Blade_Templates-FF2D20?logo=laravel&logoColor=white) **Laravel Blade** (Server-side rendering)
+-   **JavaScript / Alpine.js** (For interactive UI components)
 
-## Code of Conduct
+**Backend**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   ![Laravel](https://img.shields.io/badge/-Laravel_PHP-FF2D20?logo=laravel&logoColor=white) **Laravel Framework** (MVC Architecture)
+-   ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?logo=mysql&logoColor=white) **MySQL** (Relational Database)
 
-## Security Vulnerabilities
+**Security & Tools**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   **Sanctum / Passport:** For API Token management.
+-   **Laravel Shield / Middleware:** For route protection.
+-   **Argon2ID:** For secure password hashing.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🏁 Installation & Setup
+
+Follow these steps to run the Laravel project locally:
+
+1.  **Clone the repository**
+    ```bash
+    git clone
+    ```
